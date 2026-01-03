@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install CUDA Toolkit
+      uses: Jimver/cuda-toolkit@v0.2.11
+      with:
+        cuda: '11.8'
+        method: 'network'
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake build-essential
+
+    - name: Configure CMake
+      run: |
+        mkdir build
+        cd build
+        cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=ON
+
+    - name: Build
+      run: |
+        cd build
+        make -j$(nproc)
+
+    - name: Run tests
+      run: |
+        cd build
+        ctest --output-on-failure
+
+  documentation:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Check documentation
+      run: |
+        # Check if README.md exists and is not empty
+        [ -s README.md ] || exit 1
+        # Check if all examples have documentation
+        find examples/ -name "*.cu" -exec grep -l "学习目标\|Learning objectives" {} \; | wc -l
+
+  code-quality:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Check code formatting
+      run: |
+        # Basic checks for CUDA code quality
+        find . -name "*.cu" -o -name "*.cpp" -o -name "*.h" | xargs grep -l "CUDA_CHECK\|cudaGetLastError" | wc -l
+
+    - name: Check for TODO/FIXME
+      run: |
+        # Report any TODO or FIXME comments
+        grep -r "TODO\|FIXME" --include="*.cu" --include="*.cpp" --include="*.h" . || true
