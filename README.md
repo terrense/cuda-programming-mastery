@@ -182,8 +182,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 If you encounter any issues or have questions:
 
 1. Check the [documentation](docs/)
-2. Search existing [issues](https://github.com/YOUR_USERNAME/cuda-programming-mastery/issues)
+2. Search existing [issues](https://github.com/terrense/cuda-programming-mastery/issues)
 3. Create a new issue if needed
+4. My personal E-mail : deeplearningman0723@gmail.com
 
 ## 🗺️ Roadmap
 
