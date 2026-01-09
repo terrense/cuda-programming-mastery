@@ -110,7 +110,7 @@ namespace SharedMemoryKernels {
 // 常量内存操作核函数
 namespace ConstantMemoryKernels {
     // 常量内存声明（在.cu文件中定义）
-    extern __constant__ float const_coefficients[256];
+    // extern __constant__ float const_coefficients[256];
 
     // 使用常量内存的卷积
     __global__ void constantMemoryConvolution(float* input, float* output,

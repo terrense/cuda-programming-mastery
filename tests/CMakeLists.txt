@@ -52,6 +52,38 @@ if(PERF_TEST_SOURCES)
     add_test(NAME PerformanceTests COMMAND performance_tests)
 endif()
 
+# Individual performance test executables for easier debugging
+add_executable(memory_access_benchmarks tests/performance/memory_access_benchmarks.cu)
+target_link_libraries(memory_access_benchmarks cuda_learning_core)
+target_include_directories(memory_access_benchmarks PRIVATE ${CMAKE_SOURCE_DIR}/src/core)
+set_target_properties(memory_access_benchmarks PROPERTIES
+    CUDA_SEPARABLE_COMPILATION ON
+    POSITION_INDEPENDENT_CODE ON
+)
+
+add_executable(thread_config_optimization tests/performance/thread_config_optimization.cu)
+target_link_libraries(thread_config_optimization cuda_learning_core)
+target_include_directories(thread_config_optimization PRIVATE ${CMAKE_SOURCE_DIR}/src/core)
+set_target_properties(thread_config_optimization PROPERTIES
+    CUDA_SEPARABLE_COMPILATION ON
+    POSITION_INDEPENDENT_CODE ON
+)
+
+# Add individual performance tests
+add_test(NAME MemoryAccessBenchmarks COMMAND memory_access_benchmarks)
+add_test(NAME ThreadConfigOptimization COMMAND thread_config_optimization)
+
+# Kernel performance test suite
+add_executable(kernel_performance_test_suite tests/performance/kernel_performance_test_suite.cu)
+target_link_libraries(kernel_performance_test_suite cuda_learning_core)
+target_include_directories(kernel_performance_test_suite PRIVATE ${CMAKE_SOURCE_DIR}/src/core)
+set_target_properties(kernel_performance_test_suite PROPERTIES
+    CUDA_SEPARABLE_COMPILATION ON
+    POSITION_INDEPENDENT_CODE ON
+)
+
+add_test(NAME KernelPerformanceTestSuite COMMAND kernel_performance_test_suite)
+
 # Individual test executables for easier debugging
 add_executable(test_cuda_environment unit/test_cuda_environment.cpp)
 target_link_libraries(test_cuda_environment cuda_learning_core)
