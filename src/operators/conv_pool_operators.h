@@ -167,7 +167,7 @@ public:
         std::string error_message;
     };
 
-    // 对比CUDA实现和cuDNN实现的性能
+    // 对比YOLO模型GPU加速系统的性能
     static BenchmarkResult compareConvPerformance(
         const TensorShape& input_shape,
         const TensorShape& weight_shape,
@@ -192,7 +192,6 @@ public:
 private:
     static bool initializeCuDNN();
     static void cleanupCuDNN();
-    static float measureCudaKernelTime(std::function<void()> kernel_func, int iterations);
 };
 
 // ============================================================================
