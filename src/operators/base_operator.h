@@ -264,35 +264,19 @@ public:
     static void execute(const std::string& op_name,
                        const std::vector<FloatTensor>& inputs,
                        std::vector<FloatTensor>& outputs,
-                       const OperatorContext& context) {
-        auto op = OperatorRegistry::getInstance().createOperator(op_name);
-
-        // 验证输入
-        if (!op->validateInputs(inputs, context)) {
-            throw std::runtime_error("Input validation failed for operator: " + op_name);
-        }
-
-        // 执行前向传播
-        op->forward(inputs, outputs, context);
-    }
+                       const OperatorContext& context);
 
     // 推断输出形状
     static std::vector<TensorShape> inferOutputShapes(
         const std::string& op_name,
         const std::vector<TensorShape>& input_shapes,
-        const OperatorContext& context) {
-        auto op = OperatorRegistry::getInstance().createOperator(op_name);
-        return op->inferOutputShapes(input_shapes, context);
-    }
+        const OperatorContext& context);
 
     // 估计内存使用
     static size_t estimateMemoryUsage(
         const std::string& op_name,
         const std::vector<TensorShape>& input_shapes,
-        const OperatorContext& context) {
-        auto op = OperatorRegistry::getInstance().createOperator(op_name);
-        return op->estimateMemoryUsage(input_shapes, context);
-    }
+        const OperatorContext& context);
 };
 
 } // namespace operators
