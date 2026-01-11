@@ -1,4 +1,5 @@
 #include "model_graph.h"
+#include "../operators/yolo_operators.h"
 #include "../../core/error_handler.h"
 #include <iostream>
 #include <algorithm>
@@ -458,16 +459,28 @@ bool CudaOperatorMapper::isOperatorSupported(const std::string& op_type) {
 
 std::vector<std::string> CudaOperatorMapper::getSupportedOperators() {
     return {
-        "Conv", "BatchNormalization", "Relu", "Add", "Mul", "MatMul",
+        "Input", "Conv", "BatchNormalization", "Relu", "Add", "Mul", "MatMul",
         "MaxPool", "AveragePool", "Reshape", "Transpose", "Concat",
         "YOLODetect", "Sigmoid", "Softmax"
     };
 }
 
 std::unique_ptr<operators::BaseOperator> CudaOperatorMapper::createOperator(const std::string& op_type) {
-    // 这里应该根据op_type创建相应的算子实例
-    // 为了演示，返回nullptr（实际实现中需要创建具体的算子）
-    std::cout << "Creating operator: " << op_type << " (placeholder implementation)" << std::endl;
+    std::cout << "Creating operator: " << op_type << std::endl;
+
+    if (op_type == "Input") {
+        return std::make_unique<InputOperator>();
+    } else if (op_type == "Conv") {
+        return std::make_unique<ConvOperator>();
+    } else if (op_type == "BatchNormalization") {
+        return std::make_unique<BatchNormOperator>();
+    } else if (op_type == "Relu") {
+        return std::make_unique<ReLUOperator>();
+    } else if (op_type == "YOLODetect") {
+        return std::make_unique<YOLODetectOperator>();
+    }
+
+    std::cerr << "Unsupported operator type: " << op_type << std::endl;
     return nullptr;
 }
 

@@ -71,6 +71,17 @@ bool PyTorchLoader::setInput(const std::string& name, const std::vector<float>& 
     // 验证形状
     if (tensor->shape != shape) {
         std::cerr << "Shape mismatch for tensor " << name << std::endl;
+        std::cerr << "Expected: [";
+        for (size_t i = 0; i < tensor->shape.size(); ++i) {
+            if (i > 0) std::cerr << ", ";
+            std::cerr << tensor->shape[i];
+        }
+        std::cerr << "], Got: [";
+        for (size_t i = 0; i < shape.size(); ++i) {
+            if (i > 0) std::cerr << ", ";
+            std::cerr << shape[i];
+        }
+        std::cerr << "]" << std::endl;
         return false;
     }
 
@@ -82,6 +93,7 @@ bool PyTorchLoader::setInput(const std::string& name, const std::vector<float>& 
 
     if (data.size() != expected_size) {
         std::cerr << "Data size mismatch for tensor " << name << std::endl;
+        std::cerr << "Expected: " << expected_size << ", Got: " << data.size() << std::endl;
         return false;
     }
 

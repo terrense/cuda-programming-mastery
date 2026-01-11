@@ -22,6 +22,7 @@ bool ONNXParser::loadModel(const std::string& model_path) {
         std::cerr << "Failed to open model file: " << model_path << std::endl;
         // 为演示目的，创建一个虚拟的YOLO模型结构
         createDummyYOLOModel();
+        model_loaded_ = true;  // 设置为已加载
         return true;
     }
 

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../operators/tensor.h"
-#include "../operators/base_operator.h"
+#include "../../operators/tensor.h"
+#include "../../operators/base_operator.h"
 #include <string>
 #include <vector>
 #include <map>

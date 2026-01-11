@@ -1,7 +1,9 @@
 #include "tensor.h"
+#include "../core/error_handler.h"
 #include <iostream>
 #include <sstream>
 #include <random>
+#include <chrono>
 #include <curand.h>
 #include <curand_kernel.h>
 
@@ -145,7 +147,13 @@ void Tensor<T>::fromHost(const std::vector<T>& host_data) {
     }
 
     if (device_ == DeviceType::GPU) {
-        CUDA_CHECK_THROW(cudaMemcpy(data_, host_data.data(), bytes(), cudaMemcpyHostToDevice));
+        if constexpr (std::is_same_v<T, bool>) {
+            // 特殊处理bool类型
+            std::vector<char> char_data(host_data.begin(), host_data.end());
+            CUDA_CHECK_THROW(cudaMemcpy(data_, char_data.data(), size_ * sizeof(char), cudaMemcpyHostToDevice));
+        } else {
+            CUDA_CHECK_THROW(cudaMemcpy(data_, host_data.data(), bytes(), cudaMemcpyHostToDevice));
+        }
     } else {
         std::copy(host_data.begin(), host_data.end(), data_);
     }
@@ -156,7 +164,14 @@ std::vector<T> Tensor<T>::toHost() const {
     std::vector<T> result(size_);
 
     if (device_ == DeviceType::GPU) {
-        CUDA_CHECK_THROW(cudaMemcpy(result.data(), data_, bytes(), cudaMemcpyDeviceToHost));
+        if constexpr (std::is_same_v<T, bool>) {
+            // 特殊处理bool类型
+            std::vector<char> char_data(size_);
+            CUDA_CHECK_THROW(cudaMemcpy(char_data.data(), data_, size_ * sizeof(char), cudaMemcpyDeviceToHost));
+            result.assign(char_data.begin(), char_data.end());
+        } else {
+            CUDA_CHECK_THROW(cudaMemcpy(result.data(), data_, bytes(), cudaMemcpyDeviceToHost));
+        }
     } else {
         std::copy(data_, data_ + size_, result.begin());
     }
