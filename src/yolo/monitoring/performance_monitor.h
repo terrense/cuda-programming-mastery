@@ -86,12 +86,12 @@ class RealtimePerformanceMonitor {
 private:
     std::atomic<bool> monitoring_;
     std::thread monitor_thread_;
-    std::mutex metrics_mutex_;
+    mutable std::mutex metrics_mutex_;
     std::queue<RealtimeMetrics> metrics_history_;
     size_t max_history_size_;
 
     // 监控回调函数
-    std::vector<std::function<void(const RealtimeMetrics&)>> callbacks_;
+    std::vector<void(*)(const RealtimeMetrics&)> callbacks_;
 
     // GPU监控相关
     cudaEvent_t start_event_, stop_event_;
@@ -121,7 +121,7 @@ public:
     RealtimeMetrics getAverageMetrics(size_t window_size = 100) const;
 
     // 注册回调函数
-    void registerCallback(std::function<void(const RealtimeMetrics&)> callback);
+    void registerCallback(void(*callback)(const RealtimeMetrics&));
 
     // 性能报告
     std::string generateRealtimeReport() const;

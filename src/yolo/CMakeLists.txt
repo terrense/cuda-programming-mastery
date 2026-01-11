@@ -45,6 +45,9 @@ target_link_libraries(yolo_memory CUDA::cudart)
 # 添加推理优化子目录
 add_subdirectory(inference)
 
+# 添加监控系统子目录
+add_subdirectory(monitoring)
+
 # 简化的YOLO演示程序
 add_executable(simple_yolo_demo simple_yolo_demo.cpp)
 target_link_libraries(simple_yolo_demo

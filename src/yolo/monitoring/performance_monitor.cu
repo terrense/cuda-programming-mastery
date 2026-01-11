@@ -228,7 +228,7 @@ RealtimeMetrics RealtimePerformanceMonitor::getAverageMetrics(size_t window_size
 }
 
 void RealtimePerformanceMonitor::registerCallback(
-    std::function<void(const RealtimeMetrics&)> callback) {
+    void(*callback)(const RealtimeMetrics&)) {
     callbacks_.push_back(callback);
 }
 

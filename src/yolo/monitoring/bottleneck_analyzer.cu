@@ -21,8 +21,8 @@ AdvancedBottleneckAnalyzer::AnalysisConfig::AnalysisConfig()
       enable_predictive_analysis(true), enable_root_cause_analysis(true),
       focus_components({"backbone", "neck", "head", "nms"}) {
 }
-//
-DetailedBottleneckAnalysis 嵌套结构的 toString 方法实现
+
+// DetailedBottleneckAnalysis 嵌套结构的 toString 方法实现
 std::string AdvancedBottleneckAnalyzer::DetailedBottleneckAnalysis::RootCauseAnalysis::toString() const {
     std::stringstream ss;
     ss << "Root Cause Analysis:\n";
