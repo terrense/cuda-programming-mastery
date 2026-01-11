@@ -12,6 +12,9 @@
 
 namespace yolo_acceleration {
 
+// 前向声明
+class ABTestingFramework; // 简单的前向声明，避免循环依赖
+
 // AnalysisConfig 实现
 AdvancedBottleneckAnalyzer::AnalysisConfig::AnalysisConfig()
     : analysis_window_size(100), bottleneck_threshold(0.3f),
