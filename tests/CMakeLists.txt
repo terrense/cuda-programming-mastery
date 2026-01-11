@@ -109,6 +109,32 @@ set_target_properties(test_example_execution PROPERTIES
     POSITION_INDEPENDENT_CODE ON
 )
 
+# Custom operator unit tests
+add_executable(test_math_operators unit/test_math_operators.cu)
+target_link_libraries(test_math_operators cuda_learning_core)
+target_include_directories(test_math_operators PRIVATE ${CMAKE_SOURCE_DIR}/src/core ${CMAKE_SOURCE_DIR}/src/operators)
+set_target_properties(test_math_operators PROPERTIES
+    CUDA_SEPARABLE_COMPILATION ON
+    POSITION_INDEPENDENT_CODE ON
+)
+
+add_executable(test_conv_pool_operators unit/test_conv_pool_operators.cu)
+target_link_libraries(test_conv_pool_operators cuda_learning_core)
+target_include_directories(test_conv_pool_operators PRIVATE ${CMAKE_SOURCE_DIR}/src/core ${CMAKE_SOURCE_DIR}/src/operators)
+set_target_properties(test_conv_pool_operators PROPERTIES
+    CUDA_SEPARABLE_COMPILATION ON
+    POSITION_INDEPENDENT_CODE ON
+)
+
+# Operator performance tests
+add_executable(operator_performance_tests performance/operator_performance_tests.cu)
+target_link_libraries(operator_performance_tests cuda_learning_core)
+target_include_directories(operator_performance_tests PRIVATE ${CMAKE_SOURCE_DIR}/src/core ${CMAKE_SOURCE_DIR}/src/operators)
+set_target_properties(operator_performance_tests PROPERTIES
+    CUDA_SEPARABLE_COMPILATION ON
+    POSITION_INDEPENDENT_CODE ON
+)
+
 # Kernel performance tests
 add_executable(kernel_performance_tests kernel_performance_tests.cu)
 target_link_libraries(kernel_performance_tests cuda_learning_core)
@@ -152,3 +178,6 @@ add_test(NAME CudaEnvironmentTest COMMAND test_cuda_environment)
 add_test(NAME BasicExamplesTest COMMAND test_basic_examples)
 add_test(NAME ExampleCompilationTest COMMAND test_example_compilation)
 add_test(NAME ExampleExecutionTest COMMAND test_example_execution)
+add_test(NAME MathOperatorsTest COMMAND test_math_operators)
+add_test(NAME ConvPoolOperatorsTest COMMAND test_conv_pool_operators)
+add_test(NAME OperatorPerformanceTest COMMAND operator_performance_tests)
