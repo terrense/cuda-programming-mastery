@@ -42,6 +42,9 @@ set(YOLO_MEMORY_SOURCES
 add_library(yolo_memory STATIC ${YOLO_MEMORY_SOURCES})
 target_link_libraries(yolo_memory CUDA::cudart)
 
+# 添加推理优化子目录
+add_subdirectory(inference)
+
 # 简化的YOLO演示程序
 add_executable(simple_yolo_demo simple_yolo_demo.cpp)
 target_link_libraries(simple_yolo_demo
@@ -58,7 +61,13 @@ target_link_libraries(yolo_model_loader_demo
     CUDA::cudart
 )
 
+# 查找线程库
+find_package(Threads REQUIRED)
+target_link_libraries(simple_yolo_demo Threads::Threads)
+target_link_libraries(yolo_model_loader_demo Threads::Threads)
+
 # 打印配置信息
 message(STATUS "YOLO Module Configuration:")
 message(STATUS "  CUDA Version: ${CUDAToolkit_VERSION}")
 message(STATUS "  Build Type: ${CMAKE_BUILD_TYPE}")
+message(STATUS "  Inference Optimization: Enabled")
