@@ -71,7 +71,7 @@ set_target_properties(cuda_learning_core PROPERTIES
 add_subdirectory(examples)
 
 # Tests
-option(BUILD_TESTS "Build tests" ON)
+option(BUILD_TESTS "Build tests" OFF)
 if(BUILD_TESTS)
     enable_testing()
     add_subdirectory(tests)

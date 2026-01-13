@@ -15,14 +15,14 @@ set_target_properties(gpu_architecture_tutorial PROPERTIES
 )
 
 # CUDA Programming Model Demo
-add_executable(cuda_programming_model_demo cuda_programming_model_demo.cpp)
+add_executable(cuda_programming_model_demo cuda_programming_model_demo.cu)
 target_link_libraries(cuda_programming_model_demo cuda_learning_core ${CUDA_LIBRARIES})
 set_target_properties(cuda_programming_model_demo PROPERTIES
     CUDA_SEPARABLE_COMPILATION ON
 )
 
 # Thread Hierarchy Examples
-add_executable(thread_hierarchy_examples thread_hierarchy_examples.cpp)
+add_executable(thread_hierarchy_examples thread_hierarchy_examples.cu)
 target_link_libraries(thread_hierarchy_examples cuda_learning_core ${CUDA_LIBRARIES})
 set_target_properties(thread_hierarchy_examples PROPERTIES
     CUDA_SEPARABLE_COMPILATION ON
