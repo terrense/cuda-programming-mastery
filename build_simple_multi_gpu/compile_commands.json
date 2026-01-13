@@ -1,0 +1,77 @@
+[
+{
+  "directory": "/home/shenxin/CUDA_programmming/build_simple_multi_gpu",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler  -I/home/shenxin/CUDA_programmming/src -I/home/shenxin/CUDA_programmming/src/core  --use_fast_math -Xcompiler -fPIC -lineinfo -O3 --generate-code=arch=compute_75,code=[compute_75,sm_75] -Xcompiler=-fPIC -Wall -Wextra -Wpedantic -std=c++17 -x cu -dc /home/shenxin/CUDA_programmming/src/core/advanced_memory_optimizer.cu -o CMakeFiles/cuda_learning_core.dir/src/core/advanced_memory_optimizer.cu.o",
+  "file": "/home/shenxin/CUDA_programmming/src/core/advanced_memory_optimizer.cu"
+},
+{
+  "directory": "/home/shenxin/CUDA_programmming/build_simple_multi_gpu",
+  "command": "/usr/bin/c++  -I/home/shenxin/CUDA_programmming/src -I/home/shenxin/CUDA_programmming/src/core -fPIC -Wall -Wextra -Wpedantic -std=gnu++17 -o CMakeFiles/cuda_learning_core.dir/src/core/cuda_environment.cpp.o -c /home/shenxin/CUDA_programmming/src/core/cuda_environment.cpp",
+  "file": "/home/shenxin/CUDA_programmming/src/core/cuda_environment.cpp"
+},
+{
+  "directory": "/home/shenxin/CUDA_programmming/build_simple_multi_gpu",
+  "command": "/usr/bin/c++  -I/home/shenxin/CUDA_programmming/src -I/home/shenxin/CUDA_programmming/src/core -fPIC -Wall -Wextra -Wpedantic -std=gnu++17 -o CMakeFiles/cuda_learning_core.dir/src/core/error_handler.cpp.o -c /home/shenxin/CUDA_programmming/src/core/error_handler.cpp",
+  "file": "/home/shenxin/CUDA_programmming/src/core/error_handler.cpp"
+},
+{
+  "directory": "/home/shenxin/CUDA_programmming/build_simple_multi_gpu",
+  "command": "/usr/bin/c++  -I/home/shenxin/CUDA_programmming/src -I/home/shenxin/CUDA_programmming/src/core -fPIC -Wall -Wextra -Wpedantic -std=gnu++17 -o CMakeFiles/cuda_learning_core.dir/src/core/kernel_framework.cpp.o -c /home/shenxin/CUDA_programmming/src/core/kernel_framework.cpp",
+  "file": "/home/shenxin/CUDA_programmming/src/core/kernel_framework.cpp"
+},
+{
+  "directory": "/home/shenxin/CUDA_programmming/build_simple_multi_gpu",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler  -I/home/shenxin/CUDA_programmming/src -I/home/shenxin/CUDA_programmming/src/core  --use_fast_math -Xcompiler -fPIC -lineinfo -O3 --generate-code=arch=compute_75,code=[compute_75,sm_75] -Xcompiler=-fPIC -Wall -Wextra -Wpedantic -std=c++17 -x cu -dc /home/shenxin/CUDA_programmming/src/core/memory_management.cu -o CMakeFiles/cuda_learning_core.dir/src/core/memory_management.cu.o",
+  "file": "/home/shenxin/CUDA_programmming/src/core/memory_management.cu"
+},
+{
+  "directory": "/home/shenxin/CUDA_programmming/build_simple_multi_gpu",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler  -I/home/shenxin/CUDA_programmming/src -I/home/shenxin/CUDA_programmming/src/core  --use_fast_math -Xcompiler -fPIC -lineinfo -O3 --generate-code=arch=compute_75,code=[compute_75,sm_75] -Xcompiler=-fPIC -Wall -Wextra -Wpedantic -std=c++17 -x cu -dc /home/shenxin/CUDA_programmming/src/core/multi_gpu_framework.cu -o CMakeFiles/cuda_learning_core.dir/src/core/multi_gpu_framework.cu.o",
+  "file": "/home/shenxin/CUDA_programmming/src/core/multi_gpu_framework.cu"
+},
+{
+  "directory": "/home/shenxin/CUDA_programmming/build_simple_multi_gpu",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler  -I/home/shenxin/CUDA_programmming/src -I/home/shenxin/CUDA_programmming/src/core  --use_fast_math -Xcompiler -fPIC -lineinfo -O3 --generate-code=arch=compute_75,code=[compute_75,sm_75] -Xcompiler=-fPIC -Wall -Wextra -Wpedantic -std=c++17 -x cu -dc /home/shenxin/CUDA_programmming/src/core/performance_analyzer.cu -o CMakeFiles/cuda_learning_core.dir/src/core/performance_analyzer.cu.o",
+  "file": "/home/shenxin/CUDA_programmming/src/core/performance_analyzer.cu"
+},
+{
+  "directory": "/home/shenxin/CUDA_programmming/build_simple_multi_gpu/examples/basic",
+  "command": "/usr/bin/c++  -I/home/shenxin/CUDA_programmming/src -I/home/shenxin/CUDA_programmming/src/core -Wall -Wextra -Wpedantic -std=gnu++17 -o CMakeFiles/cuda_env_test.dir/cuda_env_test.cpp.o -c /home/shenxin/CUDA_programmming/examples/basic/cuda_env_test.cpp",
+  "file": "/home/shenxin/CUDA_programmming/examples/basic/cuda_env_test.cpp"
+},
+{
+  "directory": "/home/shenxin/CUDA_programmming/build_simple_multi_gpu/examples/basic",
+  "command": "/usr/bin/c++  -I/home/shenxin/CUDA_programmming/src -I/home/shenxin/CUDA_programmming/src/core -Wall -Wextra -Wpedantic -std=gnu++17 -o CMakeFiles/gpu_architecture_tutorial.dir/gpu_architecture_tutorial.cpp.o -c /home/shenxin/CUDA_programmming/examples/basic/gpu_architecture_tutorial.cpp",
+  "file": "/home/shenxin/CUDA_programmming/examples/basic/gpu_architecture_tutorial.cpp"
+},
+{
+  "directory": "/home/shenxin/CUDA_programmming/build_simple_multi_gpu/examples/basic",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler  -I/home/shenxin/CUDA_programmming/src -I/home/shenxin/CUDA_programmming/src/core  --use_fast_math -Xcompiler -fPIC -lineinfo -O3 --generate-code=arch=compute_75,code=[compute_75,sm_75] -Wall -Wextra -Wpedantic -std=c++17 -x cu -dc /home/shenxin/CUDA_programmming/examples/basic/cuda_programming_model_demo.cu -o CMakeFiles/cuda_programming_model_demo.dir/cuda_programming_model_demo.cu.o",
+  "file": "/home/shenxin/CUDA_programmming/examples/basic/cuda_programming_model_demo.cu"
+},
+{
+  "directory": "/home/shenxin/CUDA_programmming/build_simple_multi_gpu/examples/basic",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler  -I/home/shenxin/CUDA_programmming/src -I/home/shenxin/CUDA_programmming/src/core  --use_fast_math -Xcompiler -fPIC -lineinfo -O3 --generate-code=arch=compute_75,code=[compute_75,sm_75] -Wall -Wextra -Wpedantic -std=c++17 -x cu -dc /home/shenxin/CUDA_programmming/examples/basic/thread_hierarchy_examples.cu -o CMakeFiles/thread_hierarchy_examples.dir/thread_hierarchy_examples.cu.o",
+  "file": "/home/shenxin/CUDA_programmming/examples/basic/thread_hierarchy_examples.cu"
+},
+{
+  "directory": "/home/shenxin/CUDA_programmming/build_simple_multi_gpu/examples/basic",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler  -I/home/shenxin/CUDA_programmming/src  --use_fast_math -Xcompiler -fPIC -lineinfo -O3 --generate-code=arch=compute_75,code=[compute_75,sm_75] -Wall -Wextra -Wpedantic -std=c++17 -x cu -dc /home/shenxin/CUDA_programmming/examples/basic/hello_world_cuda.cu -o CMakeFiles/hello_world_cuda.dir/hello_world_cuda.cu.o",
+  "file": "/home/shenxin/CUDA_programmming/examples/basic/hello_world_cuda.cu"
+},
+{
+  "directory": "/home/shenxin/CUDA_programmming/build_simple_multi_gpu/examples/basic",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler  -I/home/shenxin/CUDA_programmming/src  --use_fast_math -Xcompiler -fPIC -lineinfo -O3 --generate-code=arch=compute_75,code=[compute_75,sm_75] -Wall -Wextra -Wpedantic -std=c++17 -x cu -dc /home/shenxin/CUDA_programmming/examples/basic/vector_addition.cu -o CMakeFiles/vector_addition.dir/vector_addition.cu.o",
+  "file": "/home/shenxin/CUDA_programmming/examples/basic/vector_addition.cu"
+},
+{
+  "directory": "/home/shenxin/CUDA_programmming/build_simple_multi_gpu/examples/basic",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler  -I/home/shenxin/CUDA_programmming/src  --use_fast_math -Xcompiler -fPIC -lineinfo -O3 --generate-code=arch=compute_75,code=[compute_75,sm_75] -Wall -Wextra -Wpedantic -std=c++17 -x cu -dc /home/shenxin/CUDA_programmming/examples/basic/matrix_operations.cu -o CMakeFiles/matrix_operations.dir/matrix_operations.cu.o",
+  "file": "/home/shenxin/CUDA_programmming/examples/basic/matrix_operations.cu"
+},
+{
+  "directory": "/home/shenxin/CUDA_programmming/build_simple_multi_gpu/examples/advanced",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler  -I/home/shenxin/CUDA_programmming/src -I/home/shenxin/CUDA_programmming/src/core  --use_fast_math -Xcompiler -fPIC -lineinfo -O3 --generate-code=arch=compute_75,code=[compute_75,sm_75] -Wall -Wextra -Wpedantic -std=c++17 -x cu -dc /home/shenxin/CUDA_programmming/examples/advanced/advanced_memory_optimization_demo.cu -o CMakeFiles/advanced_memory_optimization_demo.dir/advanced_memory_optimization_demo.cu.o",
+  "file": "/home/shenxin/CUDA_programmming/examples/advanced/advanced_memory_optimization_demo.cu"
+}
+]
